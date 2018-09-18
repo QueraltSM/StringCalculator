@@ -62,7 +62,6 @@ public class Calculator_ {
         assertThat(Calculator.add("//[*][%]\\n1*2%3")).isEqualTo(6);
     }*/
 
-
     private static class Calculator {
         public static int add(String numbers) throws Exception {
             return Arrays.stream(tokenize(numbers))
