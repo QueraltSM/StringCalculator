@@ -36,10 +36,10 @@ public class Calculator_ {
         assertThat(Calculator.add("1,\n")).isEqualTo(1);
     }
 
-    /*@Test
+    @Test
     public void given_a_negative_number_return_exception() throws Exception {
         assertThat(Calculator.add("-1")).isEqualTo(0);
-    }*/
+    }
 
     @Test
     public void given_a_delimiter_return_the_sum_of_numbers() throws Exception {
@@ -65,22 +65,13 @@ public class Calculator_ {
         public static int add(String numbers) throws Exception {
             return Arrays.stream(tokenize(numbers))
                     .filter(s -> !s.isEmpty())
-                    .filter(s -> s.matches("[0-9]+"))
                     .mapToInt(Integer::parseInt)
                     .filter(n -> n > 0 & n<1000)
                     .sum();
         }
 
         private static String[] tokenize(String numbers) throws Exception {
-            findDelimeter(numbers);
             return numbers.split(separators);
-        }
-
-        private static void findDelimeter(String numbers) {
-            try {
-                if (!numbers.substring(numbers.indexOf('['), numbers.indexOf(']')+1)
-                        .isEmpty()) separators += "|" + numbers.substring(numbers.indexOf('['), numbers.indexOf(']')+1);
-            } catch (Exception e){}
         }
     }
 }
