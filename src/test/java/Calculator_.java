@@ -1,11 +1,10 @@
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Calculator_ {
 
-    private static String separators = "[,;\n]";
+    private static String separators = "\\D";
 
     @Test
     public void given_empty_string_should_return_0 () throws Exception {
@@ -37,10 +36,10 @@ public class Calculator_ {
         assertThat(Calculator.add("1,\n")).isEqualTo(1);
     }
 
-    @Test
+    /*@Test
     public void given_a_negative_number_return_exception() throws Exception {
         assertThat(Calculator.add("-1")).isEqualTo(0);
-    }
+    }*/
 
     @Test
     public void given_a_delimiter_return_the_sum_of_numbers() throws Exception {
@@ -57,10 +56,10 @@ public class Calculator_ {
         assertThat(Calculator.add("//[***]\n1***2***3")).isEqualTo(6);
     }
 
-    /*@Test
+    @Test
     public void given_multiple_delimiters_return_the_sum_of_numbers() throws Exception {
-        assertThat(Calculator.add("//[*][%]\\n1*2%3")).isEqualTo(6);
-    }*/
+        assertThat(Calculator.add("//[*][%]\n1*2%3")).isEqualTo(6);
+    }
 
     private static class Calculator {
         public static int add(String numbers) throws Exception {
